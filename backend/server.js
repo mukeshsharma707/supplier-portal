@@ -24,4 +24,4 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/api/suppliers", require("./routes/supplierRoutes"));
 app.use("/api/queries", require("./routes/queryRoutes"));
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(5000, () => console.log("Server running successfully on port 5000"));

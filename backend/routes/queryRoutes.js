@@ -1,7 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const multer = require("multer");
+const path = require("path");
 const Query = require("../models/Query");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, path.join(__dirname, "..", "uploads")),
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const cleanName = file.originalname.replace(/\s+/g, "_");
+    cb(null, `${uniqueSuffix}-${cleanName}`);
+  }
+});
+
+const upload = multer({ storage });
 
 // Create Query
 router.post("/", async (req, res) => {
@@ -100,5 +113,23 @@ router.put("/:id/status", async (req, res) => {
     res.status(500).json({ error: error.message || "Internal server error" });
   }
 });
+// Upload attachment
+router.post("/:id/attachment", upload.single("file"), async (req, res) => {
+  try {
+    const query = await Query.findById(req.params.id);
+    if (!query) return res.status(404).json({ error: "Query not found" });
+    if (!req.file) return res.status(400).json({ error: "File is required" });
 
+    const url = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    query.attachments.push({ name: req.file.originalname, url });
+    query.timeline.push({ status: query.status, note: `Attachment uploaded: ${req.file.originalname}` });
+    await query.save();
+
+    const updated = await Query.findById(req.params.id).populate("supplierId");
+    res.json(updated);
+  } catch (error) {
+    console.error("Upload attachment error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 module.exports = router;

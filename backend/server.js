@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("MongoDB Connected"))
+.then(() => console.log("MongoDB successfully Connected"))
 .catch(err => console.log(err));
 
 app.use("/api/suppliers", require("./routes/supplierRoutes"));

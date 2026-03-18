@@ -13,7 +13,7 @@ function QueryList() {
     const params = {};
     if (statusFilter) params.status = statusFilter;
     if (priorityFilter) params.priority = priorityFilter;
-    axios.get("http://localhost:5000/api/queries", { params }).then((res) => setQueries(res.data));
+    axios.get("https://supplier-portal-v6ye.onrender.com/api/queries", { params }).then((res) => setQueries(res.data));
   };
 
   useEffect(() => {

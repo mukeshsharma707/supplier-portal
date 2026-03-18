@@ -32,8 +32,8 @@ function Dashboard() {
 
   useEffect(() => {
     Promise.all([
-      axios.get("http://localhost:5000/api/queries"),
-      axios.get("http://localhost:5000/api/suppliers")
+      axios.get("https://supplier-portal-v6ye.onrender.com/api/queries"),
+      axios.get("https://supplier-portal-v6ye.onrender.com/api/suppliers")
     ])
       .then(([qRes, sRes]) => {
         setQueries(qRes.data);

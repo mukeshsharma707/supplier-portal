@@ -27,7 +27,7 @@ function NewQuery() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/suppliers")
+      .get("https://supplier-portal-v6ye.onrender.com/api/suppliers")
       .then((res) => {
         setSuppliers(res.data);
         setLoadingSuppliers(false);
@@ -58,7 +58,7 @@ function NewQuery() {
         message: form.message
       };
 
-      await axios.post("http://localhost:5000/api/queries", payload);
+      await axios.post("https://supplier-portal-v6ye.onrender.com/api/queries", payload);
       alert("Query Created");
       setForm({ supplierId: "", type: "", category: "Food Safety", priority: "Medium", message: "" });
     } catch (err) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_BASE = process.env.REACT_APP_API_URL || "https://supplier-portal-v6ye.onrender.com";
 const statusOptions = ["Pending", "In Review", "Resolved", "Rejected"];
 
 function QueryDetail() {

@@ -1,0 +1,155 @@
+.dashboard {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn,
+.btn-light {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.14s ease, background-color 0.14s ease;
+}
+
+.btn {
+  color: #ffffff;
+  background: #0f78d4;
+}
+
+.btn:hover {
+  background: #0664b3;
+  transform: translateY(-1px);
+}
+
+.btn-light {
+  color: #333;
+  background: #e9ecef;
+}
+
+.btn-light:hover {
+  background: #d8dce1;
+}
+
+.metrics-grid,
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 1rem;
+}
+
+.metric-card,
+.detail-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 5px 16px rgba(18, 38, 63, 0.08);
+}
+
+.metric-card h3,
+.detail-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.status-list {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #f0f3f7;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.small-metrics p,
+.detail-card ul li {
+  margin: 4px 0;
+}
+
+.detail-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.detail-card ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ecedf3;
+  padding: 7px 0;
+}
+
+.supplier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.supplier-card {
+  background: #fff;
+  border-radius: 11px;
+  padding: 14px;
+  box-shadow: 0 2px 8px rgba(26, 39, 59, 0.08);
+  border: 1px solid #edf2f8;
+}
+
+.supplier-card h4 {
+  margin: 0 0 6px;
+}
+
+.supplier-card p {
+  margin: 4px 0;
+  color: #525f72;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #0855c2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #c82333;
+  font-weight: 600;
+}

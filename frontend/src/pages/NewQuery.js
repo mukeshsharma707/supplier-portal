@@ -98,7 +98,7 @@ function NewQuery() {
 
           <div className="mb-3">
             <label className="form-label">Template</label>
-            <div className="btn-group" role="group" aria-label="Query templates" style={{ marginLeft: '20px' }}>
+            <div className="btn-group" role="group" aria-label="Query templates">
               {templates.map((tpl) => (
                 <button
                   type="button"

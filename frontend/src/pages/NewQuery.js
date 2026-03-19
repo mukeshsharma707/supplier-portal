@@ -20,9 +20,9 @@ function NewQuery() {
   const [supplierError, setSupplierError] = useState(null);
 
   const sampleSuppliers = [
-    { _id: "demo-1", name: "ACME Foods", riskLevel: "Low" },
-    { _id: "demo-2", name: "Global Harvest", riskLevel: "Medium" },
-    { _id: "demo-3", name: "PureProduce Ltd.", riskLevel: "High" }
+    { _id: "65f1234567890abcdef12341", name: "ACME Foods", riskLevel: "Low" },
+    { _id: "65f1234567890abcdef12342", name: "Global Harvest", riskLevel: "Medium" },
+    { _id: "65f1234567890abcdef12343", name: "PureProduce Ltd.", riskLevel: "High" }
   ];
 
   useEffect(() => {

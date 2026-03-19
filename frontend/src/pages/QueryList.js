@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -9,16 +9,20 @@ function QueryList() {
   const [statusFilter, setStatusFilter] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("");
 
-  const fetchQueries = () => {
+  // Wrapped in useCallback to prevent infinite loops and satisfy ESLint
+  const fetchQueries = useCallback(() => {
     const params = {};
     if (statusFilter) params.status = statusFilter;
     if (priorityFilter) params.priority = priorityFilter;
-    axios.get("https://supplier-portal-v6ye.onrender.com/api/queries", { params }).then((res) => setQueries(res.data));
-  };
+    axios
+      .get("https://supplier-portal-v6ye.onrender.com/api/queries", { params })
+      .then((res) => setQueries(res.data))
+      .catch((err) => console.error("Fetch error:", err));
+  }, [statusFilter, priorityFilter]);
 
   useEffect(() => {
     fetchQueries();
-  }, [statusFilter, priorityFilter]);
+  }, [fetchQueries]); // fetchQueries is now a stable dependency
 
   return (
     <div>

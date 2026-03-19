@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -10,21 +10,21 @@ function QueryDetail() {
   const [query, setQuery] = useState(null);
   const [comment, setComment] = useState("");
   const [status, setStatus] = useState("");
+  const [file, setFile] = useState(null);
 
-  const loadQuery = () => {
+  // Memoizing loadQuery so it can be used safely in useEffect
+  const loadQuery = useCallback(() => {
     axios.get(`${API_BASE}/api/queries/${id}`).then((res) => {
       setQuery(res.data);
       setStatus(res.data.status);
     }).catch((err) => {
       console.error("Load query error", err?.response?.data || err.message);
     });
-  };
+  }, [id]); // Re-creates only if URL ID changes
 
   useEffect(() => {
     loadQuery();
-  }, [id]);
-
-  const [file, setFile] = useState(null);
+  }, [loadQuery]); // Stable dependency
 
   const sendComment = async () => {
     if (!comment.trim()) return;
